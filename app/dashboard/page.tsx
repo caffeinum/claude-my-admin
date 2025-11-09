@@ -4,7 +4,7 @@ import { TopUsers } from '@/widgets/top-users'
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-background p-8">
+    <div className="min-h-screen p-8 bg-dot-pattern">
       <div className="mb-8">
         <h1 className="text-4xl font-bold">Dashboard</h1>
         <p className="text-muted-foreground">monitor your app metrics</p>
