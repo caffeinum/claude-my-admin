@@ -101,3 +101,7 @@ pnpm build
 ```
 
 ensure your production database is configured in your deployment environment.
+
+## license
+
+mit
