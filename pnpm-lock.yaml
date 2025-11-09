@@ -11,6 +11,9 @@ importers:
       '@ai-sdk/react':
         specifier: ^2.0.89
         version: 2.0.89(react@19.0.0)(zod@4.1.12)
+      '@next/env':
+        specifier: ^16.0.1
+        version: 16.0.1
       '@types/ms':
         specifier: ^0.7.32
         version: 0.7.32
@@ -432,6 +435,9 @@ packages:
 
   '@next/env@15.1.6':
     resolution: {integrity: sha512-d9AFQVPEYNr+aqokIiPLNK/MTyt3DWa/dpKveiAaVccUadFbhFEvY6FXYX2LJO2Hv7PHnLBu2oWwB4uBuHjr/w==}
+
+  '@next/env@16.0.1':
+    resolution: {integrity: sha512-LFvlK0TG2L3fEOX77OC35KowL8D7DlFF45C0OvKMC4hy8c/md1RC4UMNDlUGJqfCoCS2VWrZ4dSE6OjaX5+8mw==}
 
   '@next/eslint-plugin-next@15.1.6':
     resolution: {integrity: sha512-+slMxhTgILUntZDGNgsKEYHUvpn72WP1YTlkmEhS51vnVd7S9jEEy0n9YAMcI21vUG4akTw9voWH02lrClt/yw==}
@@ -2719,6 +2725,8 @@ snapshots:
     optional: true
 
   '@next/env@15.1.6': {}
+
+  '@next/env@16.0.1': {}
 
   '@next/eslint-plugin-next@15.1.6':
     dependencies:
