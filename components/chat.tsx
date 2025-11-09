@@ -54,7 +54,7 @@ export function Chat() {
                 </div>
                 <div className="text-sm whitespace-pre-wrap">
                   {message.parts
-                    .filter((part) => part.type === 'text')
+                    .filter((part): part is Extract<typeof part, { type: 'text' }> => part.type === 'text')
                     .map((part, idx) => (
                       <div key={idx}>{part.text}</div>
                     ))}

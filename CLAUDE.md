@@ -67,3 +67,21 @@ when connecting to new database:
 1. update `.env.local` with connection string
 2. run `pnpm drizzle-kit push:pg` to sync schema
 3. schema is in `drizzle/schema.ts`, drizzle config points to `lib/drizzle.ts`
+
+## common issues & fixes
+
+### typescript type guards with ai sdk
+when filtering message parts from ai sdk's useChat hook, use proper type guard to avoid typescript errors:
+```typescript
+// ❌ wrong - typescript can't infer type
+message.parts.filter((part) => part.type === 'text')
+
+// ✅ correct - explicit type guard
+message.parts.filter((part): part is Extract<typeof part, { type: 'text' }> => part.type === 'text')
+```
+
+### drizzle schema imports
+- schema is pulled from production supabase database
+- available tables: users, messages, subscriptions, manualPayments, stripePayments, tributePayments, jobQueue, feedbackReports, systemConfig, promptVersions, tributeExport
+- note: there is no `profiles` table - use `users` table instead
+- when using drizzle count aggregations, import `count` from `drizzle-orm` not from `drizzle-orm/pg-core`
