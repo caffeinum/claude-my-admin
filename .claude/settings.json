@@ -2,11 +2,11 @@
   "hooks": {
     "Stop": [
       {
-        "matcher": "*",
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/auto-commit.sh"
+            "command": ".claude/hooks/auto-commit.sh"
           }
         ]
       }

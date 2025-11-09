@@ -1,49 +1,103 @@
----
-name: Postgres + Drizzle Next.js Starter
-slug: postgres-drizzle
-description: Simple Next.js template that uses a Postgres database and Drizzle as the ORM.
-framework: Next.js
-useCase: Starter
-css: Tailwind
-database: Postgres
-deployUrl: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fstorage%2Fpostgres-drizzle&project-name=postgres-drizzle&repository-name=postgres-drizzle&demo-title=Vercel%20Postgres%20%2B%20Drizzle%20Next.js%20Starter&demo-description=Simple%20Next.js%20template%20that%20uses%20Vercel%20Postgres%20as%20the%20database%20and%20Drizzle%20as%20the%20ORM.&demo-url=https%3A%2F%2Fpostgres-drizzle.vercel.app%2F&demo-image=https%3A%2F%2Fpostgres-drizzle.vercel.app%2Fopengraph-image.png&products=%5B%7B%22type%22%3A%22integration%22%2C%22group%22%3A%22postgres%22%7D%5D
-demoUrl: https://postgres-drizzle.vercel.app/
-relatedTemplates:
-  - postgres-starter
-  - postgres-prisma
-  - postgres-kysely
----
+# admin panel
 
-# Postgres + Drizzle Next.js Starter
+a modern, customizable admin dashboard built with next.js, postgres, and drizzle orm. features a drag-and-drop widget system with responsive grid layouts for monitoring application metrics.
 
-Simple Next.js template that uses a Postgres database and [Drizzle](https://github.com/drizzle-team/drizzle-orm) as the ORM.
+## features
 
-## Demo
+- **drag & drop dashboard**: customizable widget layout with react-grid-layout
+- **responsive design**: adaptive layouts for desktop, tablet, and mobile
+- **real-time widgets**: 
+  - daily active users counter with trend indicators
+  - user activity graph visualization
+  - top users leaderboard
+- **modern ui**: shadcn/ui components with tailwind css
+- **database integration**: postgres with drizzle orm for type-safe queries
+- **dot grid background**: subtle visual pattern for enhanced aesthetics
 
-https://postgres-drizzle.vercel.app/
+## tech stack
 
-## How to Use
+- **framework**: next.js 15 (app router)
+- **database**: postgres with drizzle orm
+- **styling**: tailwind css + shadcn/ui
+- **ui library**: react 19
+- **grid layout**: react-grid-layout
+- **icons**: lucide-react
+- **typescript**: full type safety
 
-You can choose from one of the following two methods to use this repository:
+## getting started
 
-### One-Click Deploy
+### prerequisites
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+- node.js 18+ and pnpm
+- postgres database
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fstorage%2Fpostgres-drizzle&project-name=postgres-drizzle&repository-name=postgres-drizzle&demo-title=Vercel%20Postgres%20%2B%20Drizzle%20Next.js%20Starter&demo-description=Simple%20Next.js%20template%20that%20uses%20Vercel%20Postgres%20as%20the%20database%20and%20Drizzle%20as%20the%20ORM.&demo-url=https%3A%2F%2Fpostgres-drizzle.vercel.app%2F&demo-image=https%3A%2F%2Fpostgres-drizzle.vercel.app%2Fopengraph-image.png&products=%5B%7B%22type%22%3A%22integration%22%2C%22group%22%3A%22postgres%22%7D%5D)
+### installation
 
-### Clone and Deploy
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
-
+1. clone the repository:
 ```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/storage/postgres-drizzle
+git clone https://github.com/caffeinum/admin-panel.git
+cd admin-panel
 ```
 
-Next, run Next.js in development mode:
+2. install dependencies:
+```bash
+pnpm install
+```
 
+3. set up your database:
+```bash
+# create a .env.local file with your database url
+DATABASE_URL="your-postgres-connection-string"
+
+# run database migrations
+pnpm drizzle-kit push:pg
+```
+
+4. run the development server:
 ```bash
 pnpm dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples) ([Documentation](https://nextjs.org/docs/deployment)).
+open [http://localhost:3000](http://localhost:3000) to view the dashboard.
+
+## project structure
+
+```
+admin-panel/
+├── app/                # next.js app router
+│   ├── dashboard/      # dashboard page with widget grid
+│   └── layout.tsx      # root layout
+├── components/         # reusable ui components
+│   └── ui/            # shadcn/ui components
+├── widgets/           # dashboard widget components
+│   ├── dau-counter.tsx
+│   ├── dau-graph.tsx
+│   └── top-users.tsx
+├── drizzle/           # database schema and migrations
+│   └── schema.ts      # user profiles table
+└── lib/               # utility functions and db client
+```
+
+## customization
+
+### adding new widgets
+
+1. create a new widget component in `widgets/`
+2. add the widget to the dashboard grid layout in `app/dashboard/page.tsx`
+3. configure the layout positions for different breakpoints
+
+### styling
+
+- global styles: `app/globals.css`
+- tailwind config: `tailwind.config.js`
+- component variants: using shadcn/ui's class-variance-authority
+
+## deployment
+
+the app is ready for deployment on vercel:
+
+```bash
+pnpm build
+```
+
+ensure your production database is configured in your deployment environment.
