@@ -1,8 +1,31 @@
+'use client'
+
 import { DauCounter } from '@/widgets/dau-counter'
 import { DauGraph } from '@/widgets/dau-graph'
 import { TopUsers } from '@/widgets/top-users'
+import { Responsive, WidthProvider } from 'react-grid-layout'
+
+const ResponsiveGridLayout = WidthProvider(Responsive)
 
 export default function DashboardPage() {
+  const layout = {
+    lg: [
+      { i: 'dau-counter', x: 0, y: 0, w: 1, h: 1 },
+      { i: 'dau-graph', x: 1, y: 0, w: 2, h: 1 },
+      { i: 'top-users', x: 3, y: 0, w: 1, h: 2 },
+    ],
+    md: [
+      { i: 'dau-counter', x: 0, y: 0, w: 1, h: 1 },
+      { i: 'dau-graph', x: 1, y: 0, w: 1, h: 1 },
+      { i: 'top-users', x: 0, y: 1, w: 1, h: 2 },
+    ],
+    sm: [
+      { i: 'dau-counter', x: 0, y: 0, w: 1, h: 1 },
+      { i: 'dau-graph', x: 0, y: 1, w: 1, h: 1 },
+      { i: 'top-users', x: 0, y: 2, w: 1, h: 2 },
+    ],
+  }
+
   return (
     <div className="min-h-screen p-8 bg-dot-pattern">
       <div className="mb-8">
@@ -10,22 +33,25 @@ export default function DashboardPage() {
         <p className="text-muted-foreground">monitor your app metrics</p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[200px]">
-        {/* 1x1 widget */}
-        <div className="col-span-1 row-span-1">
+      <ResponsiveGridLayout
+        className="layout"
+        layouts={layout}
+        breakpoints={{ lg: 1200, md: 996, sm: 768 }}
+        cols={{ lg: 4, md: 2, sm: 1 }}
+        rowHeight={200}
+        isDraggable={true}
+        isResizable={true}
+      >
+        <div key="dau-counter">
           <DauCounter />
         </div>
-        
-        {/* 2x1 widget */}
-        <div className="col-span-1 md:col-span-2 row-span-1">
+        <div key="dau-graph">
           <DauGraph />
         </div>
-        
-        {/* 1x2 widget */}
-        <div className="col-span-1 row-span-2">
+        <div key="top-users">
           <TopUsers />
         </div>
-      </div>
+      </ResponsiveGridLayout>
     </div>
   )
 }
