@@ -42,13 +42,13 @@ export default function DashboardPage() {
         isDraggable={true}
         isResizable={true}
       >
-        <div key="dau-counter">
+        <div key="dau-counter" className="w-full h-full">
           <DauCounter />
         </div>
-        <div key="dau-graph">
+        <div key="dau-graph" className="w-full h-full">
           <DauGraph />
         </div>
-        <div key="top-users">
+        <div key="top-users" className="w-full h-full">
           <TopUsers />
         </div>
       </ResponsiveGridLayout>
