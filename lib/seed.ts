@@ -1,6 +1,6 @@
 import postgres from 'postgres'
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' })
+const sql = postgres(process.env.POSTGRES_URL!, { ssl: false })
 
 export async function seed() {
   // Create table with raw SQL
