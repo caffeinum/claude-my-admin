@@ -3,7 +3,11 @@
 # Auto-commit hook for Claude Code
 # Runs after each Claude response to automatically commit changes
 
-cd "$CLAUDE_PROJECT_DIR" || exit 1
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+cd "$PROJECT_DIR" || exit 1
 
 # Check if there are any changes to commit
 if git diff --quiet && git diff --cached --quiet; then

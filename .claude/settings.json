@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/auto-commit.sh"
+            "command": "sh .claude/hooks/auto-commit.sh"
           }
         ]
       }
