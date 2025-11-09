@@ -56,7 +56,7 @@ export function Chat() {
                   {message.parts
                     .filter((part) => part.type === 'text')
                     .map((part, idx) => (
-                      <span key={idx}>{part.text}</span>
+                      <div key={idx}>{part.text}</div>
                     ))}
                 </div>
               </div>
