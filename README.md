@@ -58,7 +58,7 @@ visit [db-dashboard-4.emergent.host](https://db-dashboard-4.emergent.host/) and 
 2. let ai generate your schema
 3. get instant deployment at `your-project.adminpanel.dev`
 
-### option 2: self-host
+### option 2: self-host with ai agent
 
 **prerequisites**: node.js 18+, pnpm, postgres database
 
@@ -69,7 +69,19 @@ cd admin-panel
 pnpm install
 ```
 
-2. configure your database:
+2. run the ai agent to set up everything:
+```bash
+pnpm run-agent
+```
+
+the agent will:
+- ask for your database connection details
+- analyze your database schema
+- generate drizzle orm schema automatically
+- set up widgets based on your data
+- configure and start the dev server
+
+3. alternatively, manual setup:
 ```bash
 # create .env.local with your postgres connection
 POSTGRES_URL=postgresql://user:password@host:port/database
@@ -78,10 +90,8 @@ POSTGRES_USER=user
 POSTGRES_HOST=host
 POSTGRES_PASSWORD=password
 POSTGRES_DATABASE=database
-```
 
-3. sync schema and run:
-```bash
+# sync schema and run
 pnpm drizzle-kit push:pg
 pnpm dev
 ```
