@@ -9,7 +9,7 @@ import { InferSelectModel, InferInsertModel } from 'drizzle-orm'
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' })
+const sql = postgres(process.env.POSTGRES_URL!, { ssl: false })
 
 export const UsersTable = pgTable(
   'profiles',
