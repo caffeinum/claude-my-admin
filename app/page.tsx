@@ -3,6 +3,7 @@
 import { DauCounter } from '@/widgets/dau-counter'
 import { DauGraph } from '@/widgets/dau-graph'
 import { TopUsers } from '@/widgets/top-users'
+import { Chat } from '@/components/chat'
 import { Responsive, WidthProvider } from 'react-grid-layout'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
@@ -52,6 +53,10 @@ export default function DashboardPage() {
           <TopUsers />
         </div>
       </ResponsiveGridLayout>
+      
+      <div className="fixed bottom-6 right-6 w-96 h-[500px] z-50">
+        <Chat />
+      </div>
     </div>
   )
 }
