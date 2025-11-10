@@ -4,7 +4,8 @@
 
 yes, i trust my claude. introducing: **claude-my-admin** - ai-powered admin panel generator that connects to your database and creates a fully functional dashboard in minutes. think posthog + metabase + sql editor, all open-source and powered by claude code.
 
-🔗 **live demo**: [db-dashboard-4.emergent.host](https://db-dashboard-4.emergent.host/)
+🔗 **live demo**: [db-dashboard-4.emergent.host](https://db-dashboard-4.emergent.host/)  
+📊 **pitch deck**: [google slides](https://docs.google.com/presentation/d/1eBb39HzG80fPCxlB-kSF7iM5fl_0syLwZzSBUp-3fy4/edit?usp=sharing)
 
 ## why claude-my-admin?
 
