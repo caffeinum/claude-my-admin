@@ -87,7 +87,7 @@ export default function DashboardPage() {
         {/* header */}
         <header className="bg-white/95 backdrop-blur-sm border-b border-[#ddd]">
           <div className="flex items-center gap-2 px-4 py-3">
-            <span className="text-gray-600">🖥️ server: 127.0.0.1</span>
+            <span className="text-gray-600">🖥️ server: {process.env.POSTGRES_HOST || 'localhost'}</span>
           </div>
           
           {/* navigation tabs */}
@@ -135,9 +135,11 @@ export default function DashboardPage() {
                 </div>
                 <div className="p-4 space-y-4">
                   <div className="flex items-center gap-3">
-                    <span className="text-xs text-gray-700">🖥️ collation:</span>
+                    <span className="text-xs text-gray-700">🗄️ database:</span>
                     <select className="border border-[#ccc] rounded px-2 py-1 text-xs">
-                      <option>utf8mb4_unicode_ci</option>
+                      <option>production</option>
+                      <option>staging</option>
+                      <option>development</option>
                     </select>
                   </div>
                   <button className="text-xs text-blue-600 hover:text-blue-800">
@@ -163,7 +165,8 @@ export default function DashboardPage() {
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-gray-700">🎨 theme:</span>
                     <select className="border border-[#ccc] rounded px-2 py-1 text-xs">
-                      <option>pmahomme</option>
+                      <option>light</option>
+                      <option>dark</option>
                     </select>
                   </div>
                 </div>
@@ -188,13 +191,13 @@ export default function DashboardPage() {
                 </div>
                 <div className="p-4">
                   <ul className="space-y-1 text-xs">
-                    <li><strong>server:</strong> 127.0.0.1 via tcp/ip</li>
-                    <li><strong>type:</strong> postgres</li>
-                    <li><strong>ssl:</strong> not used</li>
-                    <li><strong>version:</strong> 10.4.22</li>
-                    <li><strong>protocol:</strong> 10</li>
-                    <li><strong>user:</strong> root@localhost</li>
-                    <li><strong>charset:</strong> utf-8 unicode</li>
+                    <li><strong>server:</strong> {process.env.POSTGRES_HOST || 'localhost'} via tcp/ip</li>
+                    <li><strong>type:</strong> postgresql</li>
+                    <li><strong>ssl:</strong> disabled</li>
+                    <li><strong>database:</strong> {process.env.POSTGRES_DATABASE || 'postgres'}</li>
+                    <li><strong>user:</strong> {process.env.POSTGRES_USER || 'postgres'}</li>
+                    <li><strong>driver:</strong> postgres.js 3.4.5</li>
+                    <li><strong>orm:</strong> drizzle 0.28.6</li>
                   </ul>
                 </div>
               </div>
@@ -208,9 +211,11 @@ export default function DashboardPage() {
                 </div>
                 <div className="p-4">
                   <ul className="space-y-1 text-xs">
-                    <li><strong>apache:</strong> 2.4.52 openssl/1.1.1m</li>
-                    <li><strong>db client:</strong> libmysql - mysqlnd 8.1.2</li>
-                    <li><strong>php ext:</strong> mysqli, curl, mbstring</li>
+                    <li><strong>runtime:</strong> node.js 24.5.0</li>
+                    <li><strong>framework:</strong> next.js 15.1.6</li>
+                    <li><strong>package manager:</strong> npm 11.5.1</li>
+                    <li><strong>react:</strong> 19.0.0</li>
+                    <li><strong>typescript:</strong> 5.2.2</li>
                   </ul>
                 </div>
               </div>
@@ -224,9 +229,10 @@ export default function DashboardPage() {
                 </div>
                 <div className="p-4">
                   <ul className="space-y-1 text-xs">
-                    <li><strong>version:</strong> 5.1.1</li>
-                    <li><a href="#" className="text-blue-600 hover:text-blue-800">documentation</a></li>
-                    <li><a href="#" className="text-blue-600 hover:text-blue-800">official homepage</a></li>
+                    <li><strong>version:</strong> 0.0.0</li>
+                    <li><strong>name:</strong> claude-my-admin</li>
+                    <li><a href="https://github.com/caffeinum/admin-panel" className="text-blue-600 hover:text-blue-800">github repository</a></li>
+                    <li><a href="https://github.com/caffeinum/admin-panel#readme" className="text-blue-600 hover:text-blue-800">documentation</a></li>
                   </ul>
                 </div>
               </div>
