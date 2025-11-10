@@ -1,6 +1,6 @@
 {
-  "name": "postgres-drizzle",
-  "repository": "https://github.com/vercel/examples.git",
+  "name": "claude-my-admin",
+  "repository": "https://github.com/caffeinum/admin-panel.git",
   "license": "MIT",
   "version": "0.0.0",
   "private": true,

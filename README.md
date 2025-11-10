@@ -1,12 +1,12 @@
-# adminpanel
+# claude-my-admin
 
-**don't build your admin panel. prompt it.**
+**do you trust claude with your production db?**
 
-ai-powered admin panel generator that connects to your database and creates a fully functional dashboard in minutes. think posthog + metabase + sql editor, all open-source and powered by claude code.
+yes, i trust my claude. introducing: **claude-my-admin** - ai-powered admin panel generator that connects to your database and creates a fully functional dashboard in minutes. think posthog + metabase + sql editor, all open-source and powered by claude code.
 
 🔗 **live demo**: [db-dashboard-4.emergent.host](https://db-dashboard-4.emergent.host/)
 
-## why adminpanel?
+## why claude-my-admin?
 
 skip weeks of boilerplate. connect your database, let ai analyze your schema, and get an instant admin panel with:
 
@@ -25,7 +25,7 @@ paste your postgresql connection url. supports mysql and other databases too.
 ai analyzes your database and generates a drizzle schema + next.js template app instantly.
 
 ### 3. instant deployment
-your admin panel is hosted at `your-project.adminpanel.dev`, ready to use immediately.
+your admin panel is hosted at `your-project.claude-my-admin.dev`, ready to use immediately.
 
 ## features
 
@@ -56,7 +56,7 @@ your admin panel is hosted at `your-project.adminpanel.dev`, ready to use immedi
 visit [db-dashboard-4.emergent.host](https://db-dashboard-4.emergent.host/) and follow the 3-step setup:
 1. paste your database connection url
 2. let ai generate your schema
-3. get instant deployment at `your-project.adminpanel.dev`
+3. get instant deployment at `your-project.claude-my-admin.dev`
 
 ### option 2: self-host with ai agent
 
