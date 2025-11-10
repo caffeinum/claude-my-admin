@@ -23,10 +23,29 @@ export function Chat() {
     setInput('')
   }
 
+  const [isOpen, setIsOpen] = useState(true)
+
+  if (!isOpen) {
+    return (
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-6 right-6 bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:bg-primary/90"
+      >
+        💬
+      </button>
+    )
+  }
+
   return (
     <Card className="w-full h-full flex flex-col">
-      <CardHeader>
+      <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>chat</CardTitle>
+        <button
+          onClick={() => setIsOpen(false)}
+          className="text-muted-foreground hover:text-foreground"
+        >
+          ✕
+        </button>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col gap-4 overflow-hidden">
         <div className="flex-1 overflow-y-auto space-y-4 pr-2">
