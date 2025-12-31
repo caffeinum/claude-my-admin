@@ -1,44 +1,53 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { DauCounter } from '@/widgets/dau-counter'
 import { DauGraph } from '@/widgets/dau-graph'
 import { TopUsers } from '@/widgets/top-users'
 import { Chat } from '@/components/chat'
-import { Responsive, WidthProvider } from 'react-grid-layout'
 
-const ResponsiveGridLayout = WidthProvider(Responsive)
+const ResponsiveGridLayout = dynamic(
+  () => import('react-grid-layout').then((mod) => {
+    const { Responsive, WidthProvider } = mod
+    return WidthProvider(Responsive)
+  }),
+  { ssr: false }
+)
 
 export default function DashboardPage() {
   const layout = {
     lg: [
-      { i: 'general-settings', x: 0, y: 0, w: 1, h: 1 },
-      { i: 'appearance-settings', x: 0, y: 1, w: 1, h: 1 },
-      { i: 'dau-counter', x: 1, y: 0, w: 1, h: 1 },
-      { i: 'dau-graph', x: 1, y: 1, w: 2, h: 1 },
-      { i: 'database-server', x: 2, y: 0, w: 1, h: 1 },
-      { i: 'web-server', x: 3, y: 0, w: 1, h: 1 },
-      { i: 'app-info', x: 3, y: 1, w: 1, h: 1 },
-      { i: 'top-users', x: 0, y: 2, w: 2, h: 2 },
+      { i: 'about-app', x: 0, y: 0, w: 4, h: 2 },
+      { i: 'general-settings', x: 0, y: 2, w: 1, h: 1 },
+      { i: 'appearance-settings', x: 0, y: 3, w: 1, h: 1 },
+      { i: 'dau-counter', x: 1, y: 2, w: 1, h: 1 },
+      { i: 'dau-graph', x: 1, y: 3, w: 2, h: 1 },
+      { i: 'database-server', x: 2, y: 2, w: 1, h: 1 },
+      { i: 'web-server', x: 3, y: 2, w: 1, h: 1 },
+      { i: 'app-info', x: 3, y: 3, w: 1, h: 1 },
+      { i: 'top-users', x: 0, y: 4, w: 2, h: 2 },
     ],
     md: [
-      { i: 'general-settings', x: 0, y: 0, w: 1, h: 1 },
-      { i: 'appearance-settings', x: 1, y: 0, w: 1, h: 1 },
-      { i: 'dau-counter', x: 0, y: 1, w: 1, h: 1 },
-      { i: 'dau-graph', x: 1, y: 1, w: 1, h: 1 },
-      { i: 'database-server', x: 0, y: 2, w: 1, h: 1 },
-      { i: 'web-server', x: 1, y: 2, w: 1, h: 1 },
-      { i: 'app-info', x: 0, y: 3, w: 1, h: 1 },
-      { i: 'top-users', x: 1, y: 3, w: 1, h: 2 },
+      { i: 'about-app', x: 0, y: 0, w: 2, h: 2 },
+      { i: 'general-settings', x: 0, y: 2, w: 1, h: 1 },
+      { i: 'appearance-settings', x: 1, y: 2, w: 1, h: 1 },
+      { i: 'dau-counter', x: 0, y: 3, w: 1, h: 1 },
+      { i: 'dau-graph', x: 1, y: 3, w: 1, h: 1 },
+      { i: 'database-server', x: 0, y: 4, w: 1, h: 1 },
+      { i: 'web-server', x: 1, y: 4, w: 1, h: 1 },
+      { i: 'app-info', x: 0, y: 5, w: 1, h: 1 },
+      { i: 'top-users', x: 1, y: 5, w: 1, h: 2 },
     ],
     sm: [
-      { i: 'general-settings', x: 0, y: 0, w: 1, h: 1 },
-      { i: 'appearance-settings', x: 0, y: 1, w: 1, h: 1 },
-      { i: 'dau-counter', x: 0, y: 2, w: 1, h: 1 },
-      { i: 'dau-graph', x: 0, y: 3, w: 1, h: 1 },
-      { i: 'database-server', x: 0, y: 4, w: 1, h: 1 },
-      { i: 'web-server', x: 0, y: 5, w: 1, h: 1 },
-      { i: 'app-info', x: 0, y: 6, w: 1, h: 1 },
-      { i: 'top-users', x: 0, y: 7, w: 1, h: 2 },
+      { i: 'about-app', x: 0, y: 0, w: 1, h: 2 },
+      { i: 'general-settings', x: 0, y: 2, w: 1, h: 1 },
+      { i: 'appearance-settings', x: 0, y: 3, w: 1, h: 1 },
+      { i: 'dau-counter', x: 0, y: 4, w: 1, h: 1 },
+      { i: 'dau-graph', x: 0, y: 5, w: 1, h: 1 },
+      { i: 'database-server', x: 0, y: 6, w: 1, h: 1 },
+      { i: 'web-server', x: 0, y: 7, w: 1, h: 1 },
+      { i: 'app-info', x: 0, y: 8, w: 1, h: 1 },
+      { i: 'top-users', x: 0, y: 9, w: 1, h: 2 },
     ],
   }
 
@@ -127,6 +136,119 @@ export default function DashboardPage() {
             isDraggable={true}
             isResizable={true}
           >
+            {/* about app */}
+            <div key="about-app" className="w-full h-full">
+              <div className="bg-white rounded-sm border border-[#ddd] overflow-hidden h-full">
+                <div className="bg-gradient-to-b from-[#e74c3c] to-[#c0392b] text-white px-4 py-3 font-semibold">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">📊</span>
+                    <span>About myAdmin Dashboard</span>
+                  </div>
+                </div>
+                <div className="p-6 overflow-auto h-[calc(100%-48px)]">
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">🎯 What is myAdmin?</h3>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        myAdmin is a modern, full-featured admin dashboard built with Next.js 15 and PostgreSQL.
+                        It provides real-time monitoring and management of your application&apos;s metrics, users, and database operations
+                        through an intuitive drag-and-drop interface.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">✨ Key Features</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="bg-blue-50 border border-blue-200 rounded p-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-lg">🎨</span>
+                            <div>
+                              <h4 className="font-semibold text-sm text-gray-800">Drag-and-Drop Widgets</h4>
+                              <p className="text-xs text-gray-600 mt-1">Customize your dashboard layout with responsive grid system powered by react-grid-layout</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-green-50 border border-green-200 rounded p-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-lg">📈</span>
+                            <div>
+                              <h4 className="font-semibold text-sm text-gray-800">Real-Time Analytics</h4>
+                              <p className="text-xs text-gray-600 mt-1">Monitor daily active users (DAU), track user engagement with interactive graphs and counters</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-purple-50 border border-purple-200 rounded p-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-lg">🗄️</span>
+                            <div>
+                              <h4 className="font-semibold text-sm text-gray-800">PostgreSQL Integration</h4>
+                              <p className="text-xs text-gray-600 mt-1">Type-safe database queries using Drizzle ORM with support for multiple environments</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-orange-50 border border-orange-200 rounded p-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-lg">💬</span>
+                            <div>
+                              <h4 className="font-semibold text-sm text-gray-800">AI-Powered Chat</h4>
+                              <p className="text-xs text-gray-600 mt-1">Built-in chat assistant using Vercel AI SDK for instant help and insights</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-pink-50 border border-pink-200 rounded p-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-lg">👥</span>
+                            <div>
+                              <h4 className="font-semibold text-sm text-gray-800">User Management</h4>
+                              <p className="text-xs text-gray-600 mt-1">View top users, analyze activity patterns, manage subscriptions and payments</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-yellow-50 border border-yellow-200 rounded p-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-lg">🎛️</span>
+                            <div>
+                              <h4 className="font-semibold text-sm text-gray-800">Multi-Environment</h4>
+                              <p className="text-xs text-gray-600 mt-1">Seamlessly switch between production, staging, and development databases</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">🛠️ Technology Stack</h3>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-black text-white text-xs rounded-full">Next.js 15</span>
+                        <span className="px-3 py-1 bg-blue-600 text-white text-xs rounded-full">React 19</span>
+                        <span className="px-3 py-1 bg-blue-500 text-white text-xs rounded-full">TypeScript</span>
+                        <span className="px-3 py-1 bg-green-600 text-white text-xs rounded-full">PostgreSQL</span>
+                        <span className="px-3 py-1 bg-yellow-500 text-white text-xs rounded-full">Drizzle ORM</span>
+                        <span className="px-3 py-1 bg-purple-600 text-white text-xs rounded-full">TailwindCSS</span>
+                        <span className="px-3 py-1 bg-pink-500 text-white text-xs rounded-full">shadcn/ui</span>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-50 border border-gray-200 rounded p-4">
+                      <h3 className="text-sm font-semibold text-gray-800 mb-2">🚀 Getting Started</h3>
+                      <ul className="space-y-1 text-xs text-gray-700">
+                        <li>• Customize your dashboard by dragging and resizing widgets</li>
+                        <li>• Switch databases using the dropdown in general settings</li>
+                        <li>• Monitor user activity with real-time DAU metrics</li>
+                        <li>• Use the chat assistant (bottom-right) for help and insights</li>
+                        <li>• Export/import data using the navigation menu</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* general settings */}
             <div key="general-settings" className="w-full h-full">
               <div className="bg-white rounded-sm border border-[#ddd] overflow-hidden h-full">

@@ -3,9 +3,9 @@ import { Inter } from 'next/font/google'
 
 export const metadata = {
   metadataBase: new URL('https://postgres-drizzle.vercel.app'),
-  title: 'Postgres Demo with Drizzle',
+  title: 'myAdmin - Modern Admin Dashboard',
   description:
-    'A simple Next.js app with a Postgres database and Drizzle as the ORM',
+    'Full-featured admin dashboard with Next.js 15 and PostgreSQL. Features drag-and-drop widgets, real-time analytics, user management, and AI-powered chat assistant.',
 }
 
 const inter = Inter({
